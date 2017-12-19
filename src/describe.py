@@ -13,7 +13,7 @@ def describe(f):
         v0 = a[int(a.shape[0] * 0.25)]
         v1 = a[int(a.shape[0] * 0.5)]
         v2 = a[int(a.shape[0] * 0.75)]
-        return [c, m, std, a[0], a[c - 1], v0, v1, v2]
+        return c, m, std, a[0], v0, v1, v2, a[c - 1]
 
     def calculate(data):
         rslt = []
