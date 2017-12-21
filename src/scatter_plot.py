@@ -10,7 +10,7 @@ HOUSE_CONV = np.vectorize(lambda x: HOGWARTS_HOUSE[x])
 EPOC_PATTERN = '%Y-%m-%d'
 EPOC_CONV = np.vectorize(lambda x: int(time.mktime(time.strptime(x.decode(),EPOC_PATTERN))))
 
-def histogram(f):
+def scatter(f):
 
     data = np.genfromtxt(f, delimiter=',', names=True, dtype=None)
     #data['Hogwarts_House']=HOUSE_CONV(data['Hogwarts_House'])
@@ -20,13 +20,13 @@ def histogram(f):
     for f in FIELD:
         r = data[f]
         r.sort()
-        plt.scatter(r, np.arange(len(r)))
+        plt.scatter(r, np.arange(len(r)), s=3.)
         plt.title(f)
         plt.show()
 
 def main():
     f = FILE if len(sys.argv) != 2 else sys.argv[1]
-    histogram(f)
+    scatter(f)
 
 if __name__ == '__main__':
     main()
